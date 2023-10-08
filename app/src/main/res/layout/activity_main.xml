@@ -41,7 +41,7 @@
             android:layout_height="@dimen/_20sdp"
             android:src="@drawable/seach_icon"
             app:tint="@color/colorSearchIcon"
-            android:contentDescription="@string/searchicon">
+            android:contentDescription="@string/search_icon">
 
         </ImageView>
 
