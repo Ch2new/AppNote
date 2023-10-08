@@ -56,6 +56,7 @@
             android:inputType="text"
             android:textColorHint="@color/colorTextHint"
             android:textSize="@dimen/_12ssp"
+            android:textColor="@color/colorwhite"
             >
         </EditText>
 

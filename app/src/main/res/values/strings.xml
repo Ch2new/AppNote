@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">testGit</string>
     <string name="my_notes">My Notes</string>
+    <string name="search_your_note">Search Your Note...</string>
+    <string name="searchicon">SearchIcon</string>
 </resources>
