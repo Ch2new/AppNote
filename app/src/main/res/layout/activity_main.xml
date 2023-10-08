@@ -8,14 +8,59 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/MyNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/my_notes"
         android:textColor="@color/colorwhite"
         android:fontFamily="@font/ubuntubold"
-        android:layout_marginStart="20dp"
-        android:textSize="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:textSize="@dimen/_20ssp"
+        android:includeFontPadding="false"
+        app:layout_constraintTop_toTopOf="parent"
         />
+
+    <LinearLayout
+        android:id="@+id/layoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@drawable/background_seach"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/MyNote">
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:src="@drawable/seach_icon"
+            app:tint="@color/colorSearchIcon"
+            android:contentDescription="@string/searchicon">
+
+        </ImageView>
+
+        <EditText
+            android:id="@+id/input_seach"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:background="@null"
+            android:fontFamily="@font/ubunturegular"
+            android:hint="@string/search_your_note"
+            android:inputType="text"
+            android:textColorHint="@color/colorTextHint"
+            android:textSize="@dimen/_12ssp"
+            >
+        </EditText>
+
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
