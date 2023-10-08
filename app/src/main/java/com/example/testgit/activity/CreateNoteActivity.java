@@ -1,10 +1,12 @@
-package com.example.testgit;
+package com.example.testgit.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.testgit.R;
 
 public class CreateNoteActivity extends AppCompatActivity {
 

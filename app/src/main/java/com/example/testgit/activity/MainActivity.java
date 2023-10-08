@@ -1,4 +1,4 @@
-package com.example.testgit;
+package com.example.testgit.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.testgit.R;
+import com.example.testgit.activity.CreateNoteActivity;
 
 public class MainActivity extends AppCompatActivity {
 
