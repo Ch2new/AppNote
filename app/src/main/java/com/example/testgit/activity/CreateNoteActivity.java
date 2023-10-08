@@ -1,4 +1,4 @@
-package com.example.testgit;
+package com.example.testgit.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import com.example.testgit.R;
 
 public class CreateNoteActivity extends AppCompatActivity {
 
