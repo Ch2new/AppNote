@@ -62,6 +62,22 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/noteRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_2sdp"
+        android:clipToPadding="false"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@id/layoutQuickAction"
+        app:layout_constraintTop_toBottomOf="@id/layoutSearch"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <LinearLayout
         android:id="@+id/layoutQuickAction"
         android:layout_width="match_parent"
@@ -74,7 +90,7 @@
         >
 
         <ImageView
-            android:id="@+id/icon_add_note"
+            android:id="@+id/imageAddNote"
             android:layout_width="@dimen/_23sdp"
             android:layout_height="@dimen/_23sdp"
             android:src="@drawable/add_circle"
@@ -83,7 +99,7 @@
         </ImageView>
 
         <ImageView
-            android:id="@+id/icon_add_img"
+            android:id="@+id/imageAddImage"
             android:layout_width="@dimen/_23sdp"
             android:layout_height="@dimen/_23sdp"
             android:src="@drawable/image"
@@ -92,7 +108,7 @@
         </ImageView>
 
         <ImageView
-            android:id="@+id/icon_add_link"
+            android:id="@+id/imageAddWebLink"
             android:layout_width="@dimen/_23sdp"
             android:layout_height="@dimen/_23sdp"
             android:src="@drawable/web_link"
@@ -103,6 +119,7 @@
     </LinearLayout>
     
     <ImageView
+        android:id="@+id/imageAddNoteMain"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:background="@drawable/background_add_button"

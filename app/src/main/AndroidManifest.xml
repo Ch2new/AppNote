@@ -12,9 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestGit"
         tools:targetApi="31">
+        <!--
+            android:screenOrientation="portrait" คือ ล็อคจอไว้แนวตั้ง
+            android:windowSoftInputMode="stateHidden" คือ เปิดหน้าต่างมาให้ซ่อนคีบอด
+        -->
+        <activity
+            android:name=".CreateNoteActivity"
+            android:exported="false"
+            android:label="@string/title_activity_create_note"
+            android:theme="@style/Theme.TestGit"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

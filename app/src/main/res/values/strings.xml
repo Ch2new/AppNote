@@ -3,4 +3,5 @@
     <string name="my_notes">My Notes</string>
     <string name="search_your_note">Search Your Note...</string>
     <string name="search_icon">SearchIcon</string>
+    <string name="title_activity_create_note">CreateNoteActivity</string>
 </resources>
