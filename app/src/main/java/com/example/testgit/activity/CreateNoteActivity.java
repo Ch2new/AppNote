@@ -188,8 +188,6 @@ public class CreateNoteActivity extends AppCompatActivity {
                 setSubtitleIndicatorColor();
             }
         });
-
-
     }
 
     private void setSubtitleIndicatorColor(){
