@@ -70,7 +70,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<Note> notes) {
                 super.onPostExecute(notes);
-                Log.d("MY_NOTES", notes.toString());
+                if (noteList.size() == 0){
+                    noteList.addAll(notes);
+                    notesAdapters.notifyDataSetChanged();
+                }else {
+                    noteList.add(0, notes.get(0));
+                    notesAdapters.notifyItemChanged(0);
+                }
+                noteRecyclerView.smoothScrollToPosition(0);
             }
         }
         new getNotesTask().execute();
