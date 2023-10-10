@@ -3,12 +3,18 @@ package com.example.testgit.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.testgit.R;
 import com.example.testgit.activity.CreateNoteActivity;
+import com.example.testgit.database.NotesDatabase;
+import com.example.testgit.entities.Note;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,5 +39,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        getNote();
+    }
+
+    private void getNote(){
+        class getNotesTask extends AsyncTask<Void, Void, List<Note>>{
+            @Override
+            protected List<Note> doInBackground(Void... voids) {
+                return NotesDatabase.getDatabase(getApplicationContext()).notedao().getAllNotes();
+            }
+            @Override
+            protected void onPostExecute(List<Note> notes) {
+                super.onPostExecute(notes);
+                Log.d("MY_NOTES", notes.toString());
+            }
+        }
+        new getNotesTask().execute();
     }
 }
