@@ -85,6 +85,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         note.setSubtitle(inputNoteTitleSubtitle.getText().toString());
         note.setNote_text(inputNote.getText().toString());
         note.setDateTime(textDateTime.getText().toString());
+        note.setColor(selectedNoteColor);
 
         class SaveNoteTask extends AsyncTask<Void, Void, Void>{
             @Override

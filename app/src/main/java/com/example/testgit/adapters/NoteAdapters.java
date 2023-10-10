@@ -3,6 +3,7 @@ package com.example.testgit.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,16 +48,16 @@ public class NoteAdapters extends RecyclerView.Adapter<NoteAdapters.NoteViewHold
 
     static class NoteViewHolder extends RecyclerView.ViewHolder{
         TextView textTitle,textSubtitle,textDateTime;
+        LinearLayout layoutNote;
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
             textTitle = itemView.findViewById(R.id.textTitle);
             textSubtitle = itemView.findViewById(R.id.textSubtitle);
             textDateTime = itemView.findViewById(R.id.textDateTime);
-
         }
 
-        void    setNote(Note note){
-            textSubtitle.setText(note.getTitle());
+        void setNote(Note note){
+            textTitle.setText(note.getTitle());
             if (note.getSubtitle().trim().isEmpty()){
                 textSubtitle.setVisibility(View.GONE);
             }else {
