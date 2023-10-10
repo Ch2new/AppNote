@@ -55,6 +55,7 @@ public class NoteAdapters extends RecyclerView.Adapter<NoteAdapters.NoteViewHold
         LinearLayout layoutNote;
         RoundedImageView imageNote;
         public NoteViewHolder(@NonNull View itemView) {
+
             super(itemView);
             textTitle = itemView.findViewById(R.id.textTitle);
             textSubtitle = itemView.findViewById(R.id.textSubtitle);
