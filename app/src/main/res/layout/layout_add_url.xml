@@ -52,6 +52,7 @@
         android:inputType="textUri"
         android:paddingEnd="@dimen/_8sdp"
         android:paddingStart="@dimen/_8sdp"
+        android:textColor="@color/colorwhite"
         android:fontFamily="@font/ubuntumedium"
         app:layout_constraintTop_toBottomOf="@id/imageAddUrl"
         />

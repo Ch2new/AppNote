@@ -4,7 +4,7 @@
     <string name="search_your_note">Search Your Note...</string>
     <string name="search_icon">SearchIcon</string>
     <string name="title_activity_create_note">CreateNoteActivity</string>
-    <string name="add_image">Add Image\n</string>
+    <string name="add_image">Add Image</string>
     <string name="add_url">Add Url</string>
     <string name="enter_url">Enter Url</string>
     <string name="add">ADD</string>
