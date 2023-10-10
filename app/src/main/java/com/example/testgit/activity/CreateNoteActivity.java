@@ -1,13 +1,17 @@
 package com.example.testgit.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,6 +27,8 @@ import com.example.testgit.database.NotesDatabase;
 import com.example.testgit.entities.Note;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
+import org.w3c.dom.Text;
+
 public class CreateNoteActivity extends AppCompatActivity {
 
     private EditText inputNoteTitle, inputNoteTitleSubtitle, inputNote;
@@ -30,6 +36,12 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     private View viewSubtitleIndicator;
     private String selectedNoteColor;
+
+    //URL
+    private AlertDialog dialogAddURL;
+    private TextView textWebURL;
+    private LinearLayout layoutWebURL;
+    //URL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +59,11 @@ public class CreateNoteActivity extends AppCompatActivity {
         inputNoteTitle = findViewById(R.id.inputNoteTitle);
         inputNoteTitleSubtitle = findViewById(R.id.inputNoteTitleSubtitle);
         inputNote = findViewById(R.id.inputNote);
+
+        //URL link ID
+        textWebURL = findViewById(R.id.textWebURL);
+        layoutWebURL = findViewById(R.id.layoutWebURL);
+
 
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
 
@@ -194,5 +211,22 @@ public class CreateNoteActivity extends AppCompatActivity {
     private void setSubtitleIndicatorColor(){
         GradientDrawable gradientDrawable = (GradientDrawable) viewSubtitleIndicator.getBackground();
         gradientDrawable.setColor(Color.parseColor(selectedNoteColor));
+    }
+
+    private  void showAddURLDialog(){
+        if(dialogAddURL == null){
+            AlertDialog.Builder builder = new AlertDialog.Builder(CreateNoteActivity.this);
+            View view = LayoutInflater.from(this).inflate(
+                    R.layout.layout_add_url,
+                    (ViewGroup) findViewById(R.id.layoutAddUrlContainer)
+            );
+            builder.setView(view);
+
+            dialogAddURL = builder.create();
+            if(dialogAddURL.getWindow() != null){
+                dialogAddURL.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            }
+            final EditText inputURL = view.findViewById(R.id.inputURL);
+        }
     }
 }
