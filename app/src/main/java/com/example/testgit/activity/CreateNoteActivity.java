@@ -342,6 +342,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                         selectedImagePath = getPathFromUri(selectedImageUri);
                     }catch(Exception exception){
                         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }
