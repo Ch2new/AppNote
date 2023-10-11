@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         noteRecyclerView.setAdapter(notesAdapters);
 
         getNote(REQUEST_CODE_SHOW_NOTES, false);
-        getNote(REQUEST_CODE_SHOW_NOTES);
 
         EditText inputsearch = findViewById(R.id.input_seach);
         inputsearch.addTextChangedListener(new TextWatcher() {
@@ -140,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             getNote(REQUEST_CODE_AND_NOTE, false);
         } else if (requestCode == REQUEST_CODE_UPDATE_NOTE && resultCode == RESULT_OK) {
             if(data != null){
-                getNote(REQUEST_CODE_UPDATE_NOTE);
+                getNote(REQUEST_CODE_UPDATE_NOTE, data.getBooleanExtra("isNoteDeleted",false));
             }
         }
     }
