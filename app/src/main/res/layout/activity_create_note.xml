@@ -40,7 +40,7 @@
                 android:src="@drawable/ic_done"
                 android:background="@drawable/background_done_button_2"
                 android:padding="@dimen/_4sdp"
-                app:tint="@color/colorNoteColor5"
+                app:tint="@color/colorwhite"
                 app:layout_constraintBottom_toBottomOf="@id/back_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/back_button" />

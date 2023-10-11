@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -57,6 +58,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     //URL
     private AlertDialog dialogAddURL;
+    private AlertDialog dialogDeleteNote;
     private TextView textWebURL;
     private LinearLayout layoutWebURL;
     //URL
@@ -280,7 +282,6 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
-        //NOT SHOW COLOR
         if(alreayAvailabelNote != null && alreayAvailabelNote.getColor() != null && !alreayAvailabelNote.getColor().trim().isEmpty()){
             switch (alreayAvailabelNote.getColor()){
                 case "#FDBE38" :
@@ -321,7 +322,60 @@ public class CreateNoteActivity extends AppCompatActivity {
                 showAddURLDialog();
             }
         });
+
+        if(alreayAvailabelNote != null){
+            layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setVisibility(View.VISIBLE);
+            layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
+                    showDeleteDialog();
+                }
+            });
+        }
     }
+
+    private void showDeleteDialog(){
+        if(dialogDeleteNote == null){
+            AlertDialog.Builder builder = new AlertDialog.Builder(CreateNoteActivity.this);
+            View view = LayoutInflater.from(this).inflate(R.layout.layout_delete_note, (ViewGroup) findViewById(R.id.layoutDeleteNoteContainer));
+            builder.setView(view);
+            dialogDeleteNote = builder.create();
+            if (dialogDeleteNote.getWindow() != null){
+                dialogDeleteNote.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            }
+            view.findViewById(R.id.textDeleteNote).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    @SuppressLint("StaticFieldLeak")
+                    class  DeleteNoteTask extends AsyncTask<Void, Void, Void>{
+                        @Override
+                        protected Void doInBackground(Void... voids) {
+                            NotesDatabase.getDatabase(getApplicationContext()).notedao().deletenote(alreayAvailabelNote);
+                            return null;
+                        }
+                        @Override
+                        protected void onPostExecute(Void aVoid){
+                            super.onPostExecute(aVoid);
+                            Intent intent = new Intent();
+                            intent.putExtra("isNoteDeleted", true);
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                    new DeleteNoteTask().execute();
+                }
+            });
+            view.findViewById(R.id.textCancel2).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialogAddURL.dismiss();
+                }
+            });
+        }
+        dialogDeleteNote.show();
+    }
+
 
     private void setSubtitleIndicatorColor(){
         GradientDrawable gradientDrawable = (GradientDrawable) viewSubtitleIndicator.getBackground();

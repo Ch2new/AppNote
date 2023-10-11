@@ -9,4 +9,5 @@
     <string name="enter_url">Enter Url</string>
     <string name="add">ADD</string>
     <string name="cancel">CANCEL</string>
+    <string name="delete_note">Delete Note</string>
 </resources>
