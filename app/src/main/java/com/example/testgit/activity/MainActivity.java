@@ -8,8 +8,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.testgit.R;
@@ -64,6 +67,27 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         noteRecyclerView.setAdapter(notesAdapters);
 
         getNote(REQUEST_CODE_SHOW_NOTES, false);
+        getNote(REQUEST_CODE_SHOW_NOTES);
+
+        EditText inputsearch = findViewById(R.id.input_seach);
+        inputsearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                notesAdapters.cancelTimer();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (noteList.size() != 0){
+                    notesAdapters.searchNotes(editable.toString());
+                }
+            }
+        });
     }
 
 
@@ -116,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             getNote(REQUEST_CODE_AND_NOTE, false);
         } else if (requestCode == REQUEST_CODE_UPDATE_NOTE && resultCode == RESULT_OK) {
             if(data != null){
-                getNote(REQUEST_CODE_UPDATE_NOTE, data.getBooleanExtra("isNoteDeleted",false));
+                getNote(REQUEST_CODE_UPDATE_NOTE);
             }
         }
     }
