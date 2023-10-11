@@ -20,17 +20,20 @@ import com.example.testgit.entities.Note;
 import java.util.List;
 import com.example.testgit.adapters.NoteAdapters;
 import com.example.testgit.entities.Note;
+import com.example.testgit.listener.NotesListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NotesListener {
 
     public static final int REQUEST_CODE_AND_NOTE = 1;
-
+    public static  final int REQUEST_CODE_UPDATE_NOTE = 2;
     private RecyclerView noteRecyclerView;
     private List<Note> noteList;
     private NoteAdapters notesAdapters;
+    private int noteClickedPosition = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +59,19 @@ public class MainActivity extends AppCompatActivity {
         );
 
         noteList = new ArrayList<>();
-        notesAdapters = new NoteAdapters(noteList);
+        notesAdapters = new NoteAdapters(noteList,this);
         noteRecyclerView.setAdapter(notesAdapters);
 
         getNote();
+    }
+
+    @Override
+    public void onNoteClicked(Note note, int position) {
+        noteClickedPosition = position;
+        Intent intent =  new Intent(getApplicationContext(), CreateNoteActivity.class);
+        intent.putExtra("isViewOrUpdate", true);
+        intent.putExtra("note",note);
+        startActivityForResult(intent, REQUEST_CODE_UPDATE_NOTE);
     }
 
     private void getNote(){

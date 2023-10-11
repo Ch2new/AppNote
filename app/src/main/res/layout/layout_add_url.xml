@@ -7,6 +7,7 @@
     android:layout_margin="@dimen/_10sdp"
     android:layout_gravity="center"
     android:background="@drawable/background_dialog">
+
     <ImageView
         android:id="@+id/imageAddUrl"
         android:layout_width="@dimen/_25sdp"
