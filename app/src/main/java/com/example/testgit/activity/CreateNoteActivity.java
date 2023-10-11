@@ -123,7 +123,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 imageNote.setImageBitmap(null);
                 imageNote.setVisibility(View.GONE);
-                findViewById(R.id.imageRemoveWebURI).setVisibility(View.GONE);
+                findViewById(R.id.imageRemoveImage).setVisibility(View.GONE);
                 selectedImagePath = "";
             }
         });
