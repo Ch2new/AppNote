@@ -109,12 +109,11 @@ public class CreateNoteActivity extends AppCompatActivity {
             alreayAvailabelNote = (Note) getIntent().getSerializableExtra("note");
             setViewOrUpdateNote();
         }
-
         initMiscellaneous();
         setSubtitleIndicatorColor();
     }
 
-    //UPDATE NOT WHEN CLICK NOTE
+    //CANT VIEW URL, InputNote
     private void setViewOrUpdateNote(){
         inputNoteTitle.setText(alreayAvailabelNote.getTitle());
         inputNoteTitleSubtitle.setText(alreayAvailabelNote.getSubtitle());
@@ -128,7 +127,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         // NOT SHOW
         if (alreayAvailabelNote.getWebLine() != null && !alreayAvailabelNote.getWebLine().trim().isEmpty()){
             textWebURL.setText(alreayAvailabelNote.getWebLine());
-            textWebURL.setVisibility(View.VISIBLE);
+            layoutWebURL.setVisibility(View.VISIBLE);
         }
     }
 
@@ -237,7 +236,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         layoutMiscellaneous.findViewById(R.id.viewColor4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedNoteColor = "#3A52Fc";
+                selectedNoteColor = "#3A52FC";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
@@ -261,7 +260,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         });
 
         //NOT SHOW COLOR
-        if(alreayAvailabelNote != null && alreayAvailabelNote.getColor() != null && alreayAvailabelNote.getColor().trim().isEmpty()){
+        if(alreayAvailabelNote != null && alreayAvailabelNote.getColor() != null && !alreayAvailabelNote.getColor().trim().isEmpty()){
             switch (alreayAvailabelNote.getColor()){
                 case "#FDBE38" :
                     layoutMiscellaneous.findViewById(R.id.viewColor2).performClick();

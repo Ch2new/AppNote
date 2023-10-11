@@ -65,7 +65,10 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         getNote();
     }
 
+
+
     @Override
+    //when click note it will go through note edit page
     public void onNoteClicked(Note note, int position) {
         noteClickedPosition = position;
         Intent intent =  new Intent(getApplicationContext(), CreateNoteActivity.class);
