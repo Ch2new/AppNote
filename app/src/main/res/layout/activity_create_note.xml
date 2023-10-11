@@ -38,9 +38,9 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:src="@drawable/ic_done"
-                android:background="@drawable/background_done_button"
+                android:background="@drawable/background_done_button_2"
                 android:padding="@dimen/_4sdp"
-                app:tint="@color/colorIcons"
+                app:tint="@color/colorNoteColor5"
                 app:layout_constraintBottom_toBottomOf="@id/back_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/back_button" />
@@ -75,7 +75,7 @@
                 app:layout_constraintTop_toBottomOf="@id/inputNoteTitle"
                 app:layout_constraintStart_toStartOf="@id/inputNoteTitle"
                 app:layout_constraintEnd_toEndOf="@id/inputNoteTitle" />
-            
+
             <EditText
                 android:id="@+id/inputNoteTitleSubtitle"
                 android:layout_width="0dp"
@@ -141,6 +141,7 @@
                     android:autoLink="web"
                     android:fontFamily="@font/ubunturegular"
                     android:includeFontPadding="false"
+                    android:textColorLink="@color/colorAccent"
                     android:textSize="@dimen/_13ssp"
                     />
             </LinearLayout>
