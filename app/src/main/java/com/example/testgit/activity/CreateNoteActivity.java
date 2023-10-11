@@ -42,8 +42,6 @@ import com.example.testgit.database.NotesDatabase;
 import com.example.testgit.entities.Note;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-import org.w3c.dom.Text;
-
 public class CreateNoteActivity extends AppCompatActivity {
 
     private EditText inputNoteTitle, inputNoteTitleSubtitle, inputNote;
@@ -53,8 +51,9 @@ public class CreateNoteActivity extends AppCompatActivity {
     private View viewSubtitleIndicator;
     private String selectedNoteColor;
     private String selectedImagePath;
-    private static final int REQUEST_CODE_STOREAGE_PERMISSION  = 1;
+    private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
+    public static final int REQUEST_CODE_IMAGES_PERMISSION = 3;
 
     //URL
     private AlertDialog dialogAddURL;
@@ -323,7 +322,14 @@ public class CreateNoteActivity extends AppCompatActivity {
                     ActivityCompat.requestPermissions(
                             CreateNoteActivity.this,
                             new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
-                            REQUEST_CODE_STOREAGE_PERMISSION
+                            REQUEST_CODE_STORAGE_PERMISSION
+                    );
+                }
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(
+                            CreateNoteActivity.this,
+                            new String[] {Manifest.permission.READ_MEDIA_IMAGES},
+                            REQUEST_CODE_IMAGES_PERMISSION
                     );
                 }else {
                     selectImage();
@@ -375,7 +381,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                             super.onPostExecute(aVoid);
                             Intent intent = new Intent();
                             intent.putExtra("isNoteDeleted", true);
-                            setResult(RESULT_OK);
+                            setResult(RESULT_OK,intent);
                             finish();
                         }
                     }
@@ -408,7 +414,13 @@ public class CreateNoteActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == REQUEST_CODE_STOREAGE_PERMISSION && grantResults.length > 0){
+        if(requestCode == REQUEST_CODE_STORAGE_PERMISSION && grantResults.length > 0){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                selectImage();
+            } else{
+                Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+            }
+        }else if(requestCode == REQUEST_CODE_IMAGES_PERMISSION && grantResults.length > 0){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 selectImage();
             } else{

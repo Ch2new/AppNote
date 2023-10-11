@@ -29,17 +29,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.testgit.R;
-import com.example.testgit.activity.CreateNoteActivity;
 import com.example.testgit.database.NotesDatabase;
 import com.example.testgit.entities.Note;
 
 import java.util.List;
 import com.example.testgit.adapters.NoteAdapters;
-import com.example.testgit.entities.Note;
 import com.example.testgit.listener.NotesListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NotesListener {
 
@@ -47,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     public static final int REQUEST_CODE_UPDATE_NOTE = 2;
     public static  final int REQUEST_CODE_SHOW_NOTES = 3;
     public static final int REQUEST_CODE_SELECT_IMAGE = 4;
-    public static final int REQUEST_CODE_STOREAGE_PERMISSION = 5;
+    public static final int REQUEST_CODE_STORAGE_PERMISSION = 5;
+    public static final int REQUEST_CODE_IMAGES_PERMISSION = 6;
     private RecyclerView noteRecyclerView;
     private List<Note> noteList;
     private NoteAdapters notesAdapters;
@@ -121,7 +119,14 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                     ActivityCompat.requestPermissions(
                             MainActivity.this,
                             new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
-                            REQUEST_CODE_STOREAGE_PERMISSION
+                            REQUEST_CODE_STORAGE_PERMISSION
+                    );
+                }
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(
+                            MainActivity.this,
+                            new String[] {Manifest.permission.READ_MEDIA_IMAGES},
+                            REQUEST_CODE_IMAGES_PERMISSION
                     );
                 }else {
                     selectImage();
@@ -147,11 +152,17 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == REQUEST_CODE_STOREAGE_PERMISSION && grantResults.length > 0){
+        if(requestCode == REQUEST_CODE_STORAGE_PERMISSION && grantResults.length > 0){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 selectImage();
             } else{
                 Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+            }
+        }else if (requestCode == REQUEST_CODE_IMAGES_PERMISSION && grantResults.length > 0){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                selectImage();
+            } else{
+                Toast.makeText(this, "Permission Denied!", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -199,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                    noteRecyclerView.smoothScrollToPosition(0);
                }else if(requestCode == REQUEST_CODE_UPDATE_NOTE){
                    noteList.remove(noteClickedPosition);
+                   Toast.makeText(MainActivity.this, isNoteDeleted+"", Toast.LENGTH_SHORT).show();
                    if(isNoteDeleted){
                        notesAdapters.notifyItemRemoved(noteClickedPosition);
                    }else {
