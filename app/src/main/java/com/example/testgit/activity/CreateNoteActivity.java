@@ -109,6 +109,25 @@ public class CreateNoteActivity extends AppCompatActivity {
             alreayAvailabelNote = (Note) getIntent().getSerializableExtra("note");
             setViewOrUpdateNote();
         }
+
+        findViewById(R.id.imageRemoveImage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textWebURL.setText(null);
+                layoutWebURL.setVisibility(View.GONE);
+            }
+        });
+
+        findViewById(R.id.imageRemoveWebURI).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageNote.setImageBitmap(null);
+                imageNote.setVisibility(View.GONE);
+                findViewById(R.id.imageRemoveWebURI).setVisibility(View.GONE);
+                selectedImagePath = "";
+            }
+        });
+
         initMiscellaneous();
         setSubtitleIndicatorColor();
     }
@@ -122,12 +141,14 @@ public class CreateNoteActivity extends AppCompatActivity {
         if(alreayAvailabelNote.getImagePath() != null && !alreayAvailabelNote.getImagePath().trim().isEmpty()){
             imageNote.setImageBitmap(BitmapFactory.decodeFile(alreayAvailabelNote.getImagePath()));
             imageNote.setVisibility(View.VISIBLE);
+            findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
             selectedImagePath = alreayAvailabelNote.getImagePath();
         }
         // NOT SHOW
         if (alreayAvailabelNote.getWebLine() != null && !alreayAvailabelNote.getWebLine().trim().isEmpty()){
             textWebURL.setText(alreayAvailabelNote.getWebLine());
             layoutWebURL.setVisibility(View.VISIBLE);
+            findViewById(R.id.imageRemoveWebURI).setVisibility(View.VISIBLE);
         }
     }
 
