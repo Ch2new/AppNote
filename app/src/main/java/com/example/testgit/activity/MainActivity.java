@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 //               startActivity(intent);            }
                 startActivityForResult(
                         new Intent(getApplicationContext(), CreateNoteActivity.class),
-                        REQUEST_CODE_AND_NOTE
+                        REQUEST_CODE_ADD_NOTE
                 );
             }
         });
@@ -215,16 +215,12 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_AND_NOTE && resultCode == RESULT_OK) {
-            getNote(REQUEST_CODE_AND_NOTE, false);
         if (requestCode == REQUEST_CODE_ADD_NOTE && resultCode == RESULT_OK) {
-            getNote(REQUEST_CODE_ADD_NOTE);
+            getNote(REQUEST_CODE_ADD_NOTE, false);
         } else if (requestCode == REQUEST_CODE_UPDATE_NOTE && resultCode == RESULT_OK) {
             if(data != null){
                 getNote(REQUEST_CODE_UPDATE_NOTE, data.getBooleanExtra("isNoteDeleted",false));
             }
-        }
-    }
         } else if (requestCode == REQUEST_CODE_SELECT_IMAGE && resultCode == RESULT_OK) {
             if (data != null){
                 Uri selectImageURI = data.getData();
