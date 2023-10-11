@@ -110,7 +110,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             setViewOrUpdateNote();
         }
 
-        findViewById(R.id.imageRemoveImage).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.imageRemoveWebURI).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 textWebURL.setText(null);
@@ -118,7 +118,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.imageRemoveWebURI).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.imageRemoveImage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imageNote.setImageBitmap(null);
@@ -359,7 +359,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                         imageNote.setImageBitmap(bitmap);
                         imageNote.setVisibility(View.VISIBLE);
-
+                        findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
                         selectedImagePath = getPathFromUri(selectedImageUri);
                     }catch(Exception exception){
                         Toast.makeText(this, exception.getMessage(), Toast.LENGTH_SHORT).show();
