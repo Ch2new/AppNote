@@ -1,6 +1,6 @@
-package com.example.testgit.listener;
+package com.example.NoteApp.listener;
 
-import com.example.testgit.entities.Note;
+import com.example.NoteApp.entities.Note;
 
 public interface NotesListener {
      void onNoteClicked(Note note, int position);

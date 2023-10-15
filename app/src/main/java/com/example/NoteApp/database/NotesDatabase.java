@@ -1,4 +1,4 @@
-package com.example.testgit.database;
+package com.example.NoteApp.database;
 
 import android.content.Context;
 
@@ -6,8 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.testgit.dao.NoteDao;
-import com.example.testgit.entities.Note;
+import com.example.NoteApp.dao.NoteDao;
+import com.example.NoteApp.entities.Note;
 
 @Database(entities = Note.class, version = 1, exportSchema = false)
 public abstract class NotesDatabase extends RoomDatabase {

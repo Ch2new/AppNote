@@ -1,4 +1,4 @@
-package com.example.testgit.dao;
+package com.example.NoteApp.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.testgit.entities.Note;
+import com.example.NoteApp.entities.Note;
 
 import java.util.List;
 

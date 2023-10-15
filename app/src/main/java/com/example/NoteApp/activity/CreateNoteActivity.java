@@ -1,4 +1,4 @@
-package com.example.testgit.activity;
+package com.example.NoteApp.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,9 +38,9 @@ import java.util.Locale;
 
 import android.Manifest;
 
-import com.example.testgit.R;
-import com.example.testgit.database.NotesDatabase;
-import com.example.testgit.entities.Note;
+import com.example.NoteApp.R;
+import com.example.NoteApp.database.NotesDatabase;
+import com.example.NoteApp.entities.Note;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class CreateNoteActivity extends AppCompatActivity {
