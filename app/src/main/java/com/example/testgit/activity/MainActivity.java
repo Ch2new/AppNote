@@ -16,6 +16,7 @@ import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
@@ -115,21 +116,27 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         findViewById(R.id.imageAddImage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(
-                            MainActivity.this,
-                            new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
-                            REQUEST_CODE_STORAGE_PERMISSION
-                    );
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(
+                                MainActivity.this,
+                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                REQUEST_CODE_STORAGE_PERMISSION
+                        );
+                    } else {
+                        selectImage();
+                    }
                 }
-                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(
-                            MainActivity.this,
-                            new String[] {Manifest.permission.READ_MEDIA_IMAGES},
-                            REQUEST_CODE_IMAGES_PERMISSION
-                    );
-                }else {
-                    selectImage();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(
+                                MainActivity.this,
+                                new String[]{Manifest.permission.READ_MEDIA_IMAGES},
+                                REQUEST_CODE_IMAGES_PERMISSION
+                        );
+                    } else {
+                        selectImage();
+                    }
                 }
             }
         });
@@ -156,13 +163,14 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 selectImage();
             } else{
-                Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Storage Permission Denied!", Toast.LENGTH_SHORT).show();
             }
-        }else if (requestCode == REQUEST_CODE_IMAGES_PERMISSION && grantResults.length > 0){
+        }
+        else if (requestCode == REQUEST_CODE_IMAGES_PERMISSION && grantResults.length > 0){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 selectImage();
             } else{
-                Toast.makeText(this, "Permission Denied!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Image Permission Denied!", Toast.LENGTH_LONG).show();
             }
         }
     }
