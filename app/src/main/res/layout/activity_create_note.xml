@@ -34,13 +34,13 @@
 
             <ImageView
                 android:id="@+id/imageSave"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
+                android:layout_width="@dimen/_27sdp"
+                android:layout_height="@dimen/_27sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:src="@drawable/ic_done"
                 android:background="@drawable/background_done_button_2"
                 android:padding="@dimen/_4sdp"
-                app:tint="@color/colorwhite"
+                app:tint="@color/colorDefaultNoteColor"
                 app:layout_constraintBottom_toBottomOf="@id/back_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/back_button" />

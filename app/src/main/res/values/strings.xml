@@ -5,8 +5,8 @@
     <string name="search_icon">SearchIcon</string>
     <string name="title_activity_create_note">CreateNoteActivity</string>
     <string name="add_image">Add Image</string>
-    <string name="add_url">Add Url</string>
-    <string name="enter_url">Enter Url</string>
+    <string name="add_url">Add URL</string>
+    <string name="enter_url">Enter URL</string>
     <string name="add">ADD</string>
     <string name="cancel">CANCEL</string>
     <string name="delete_note">Delete Note</string>

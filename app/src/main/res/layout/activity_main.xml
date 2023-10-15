@@ -102,7 +102,7 @@
             android:id="@+id/imageAddImage"
             android:layout_width="@dimen/_23sdp"
             android:layout_height="@dimen/_23sdp"
-            android:src="@drawable/image"
+            android:src="@drawable/ic_camera"
             app:tint="@color/colorIcons"
             android:layout_marginStart="@dimen/_15sdp">
         </ImageView>
@@ -111,7 +111,7 @@
             android:id="@+id/imageAddWebLink"
             android:layout_width="@dimen/_23sdp"
             android:layout_height="@dimen/_23sdp"
-            android:src="@drawable/web_link"
+            android:src="@drawable/ic_add_link"
             app:tint="@color/colorIcons"
             android:layout_marginStart="@dimen/_15sdp">
         </ImageView>

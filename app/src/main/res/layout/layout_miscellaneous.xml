@@ -18,7 +18,7 @@
         android:includeFontPadding="false"
         android:text="Miscellaneous"
         android:gravity="center"
-        android:textColor="@color/colorwhite"
+        android:textColor="@color/colorIcons"
         android:textSize="@dimen/_13ssp"
         />
 
@@ -44,8 +44,7 @@
                android:layout_width="@dimen/_35sdp"
                android:layout_height="@dimen/_35sdp"
                android:padding="@dimen/_10sdp"
-               android:src="@drawable/ic_done"
-               app:tint="@color/colorwhite">
+               android:src="@drawable/ic_done">
            </ImageView>
         </FrameLayout>
 
@@ -122,10 +121,11 @@
         </FrameLayout>
 
         <TextView
+            android:fontFamily="@font/ubuntumedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pick Color"
-            android:textColor="@color/colorwhite"
+            android:textColor="@color/colorIcons"
             android:includeFontPadding="false"
             android:textSize="@dimen/_13ssp">
         </TextView>
@@ -145,8 +145,8 @@
             android:layout_width="@dimen/_22sdp"
             android:layout_height="@dimen/_22sdp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/image"
-            app:tint="@color/colorwhite" />
+            android:src="@drawable/ic_camera"
+            app:tint="@color/colorIcons" />
 
         <TextView
             android:layout_width="match_parent"
@@ -173,7 +173,7 @@
         <ImageView
             android:layout_width="@dimen/_22sdp"
             android:layout_height="@dimen/_22sdp"
-            android:src="@drawable/web_link"
+            android:src="@drawable/ic_add_link"
             app:tint="@color/colorIcons"/>
 
         <TextView

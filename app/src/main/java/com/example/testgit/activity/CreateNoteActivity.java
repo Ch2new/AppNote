@@ -162,7 +162,6 @@ public class CreateNoteActivity extends AppCompatActivity {
             findViewById(R.id.imageRemoveImage).setVisibility(View.VISIBLE);
             selectedImagePath = alreayAvailabelNote.getImagePath();
         }
-        // NOT SHOW
         if (alreayAvailabelNote.getWebLine() != null && !alreayAvailabelNote.getWebLine().trim().isEmpty()){
             textWebURL.setText(alreayAvailabelNote.getWebLine());
             layoutWebURL.setVisibility(View.VISIBLE);
@@ -275,7 +274,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         layoutMiscellaneous.findViewById(R.id.viewColor4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedNoteColor = "#3A52FC";
+                selectedNoteColor = "#3A52Fc";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
