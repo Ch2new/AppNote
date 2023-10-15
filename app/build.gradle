@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.testgit'
+    namespace 'com.example.NoteApp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.testgit"
+        applicationId "com.example.NoteApp"
         minSdk 26
         targetSdk 33
         versionCode 1

@@ -1,4 +1,4 @@
-package com.example.testgit.entities;
+package com.example.NoteApp.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

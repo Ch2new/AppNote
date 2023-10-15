@@ -1,4 +1,4 @@
-package com.example.testgit.adapters;
+package com.example.NoteApp.adapters;
 
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -14,9 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.testgit.R;
-import com.example.testgit.entities.Note;
-import com.example.testgit.listener.NotesListener;
+import com.example.NoteApp.R;
+import com.example.NoteApp.entities.Note;
+import com.example.NoteApp.listener.NotesListener;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
